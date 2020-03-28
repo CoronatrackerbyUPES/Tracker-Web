@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ 
+  <link rel="shortcut icon" href="img/download1.png">
+
+  <title>Dashboard</title>
+
+ 
+  <!-- bootstrap theme -->
+  <link href="css/theme.css" rel="stylesheet">
+  <!--external css-->
+  <!-- font icon -->
+  <link href="css/elegant-icons-style.css" rel="stylesheet" />
+  <link href="css/font-awesome.min.css" rel="stylesheet" />
+  <!-- Custom styles -->
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/style-responsive.css" rel="stylesheet" />
+
+  
+</head>
+
+<body>
+  <script>firebase.auth().onAuthStateChanged((user)=>{
+      if (user) {
+      //   User is signed in.
+          let user = firebase.auth().currentUser;
+          let uid
+          if(user != null){
+              uid = user.uid;
+          }
+          
+         
+      } else {
+        alert("Not Validated");
+        window.location.replace("/");
+      }
+  });
+  </script>
+
+<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+   var config = {
+   apiKey: "AIzaSyDJmkW3NWurhGFfuB6CmWwqLTh32eKLvXo",
+    authDomain: "tracker-android-39b31.firebaseapp.com",
+    databaseURL: "https://tracker-android-39b31.firebaseio.com",
+    projectId: "tracker-android-39b31",
+    storageBucket: "tracker-android-39b31.appspot.com",
+    messagingSenderId: "647384975881",
+    appId: "1:647384975881:web:cb76a44ce092f5ecc286d8",
+    measurementId: "G-L3BWKSDBS6"
+    };
+    firebase.initializeApp(config);
+	database=firebase.database();
+var ref=database.ref('RegisterData');
+ref.on('value',gotData,errData);
+
+function gotData(data)
+{if(data.exists()){
+ var content = '';
+ data.forEach(function(d){
+ var val = d.val();
+ content +='<tr>';
+                content += '<td>' + val.age + '</td>';
+                content += '<td>' + val.department + '</td>';
+                content += '<td>' + val.lossofwages + '</td>';
+                content += '<td>' + val.name + '</td>';
+                content += '<td>' + val.nooffamilymembers + '</td>';
+                content += '<td>' + val.phonenumber+ '</td>';
+                content += '<td>' + val.presentaddress + '</td>';
+                content += '</tr>';
+          $('#extable').append(content);
+		 // console.log(keys.val.department);
+ });
+}
+//console.log(data.val());
+var val=data.val();
+var keys=Object.keys(val);
+//console.log(keys);
+//console.log(val);
+//var content = '';
+//content +='<tr>';
+               
+		 
+/*
+for(var i=0;i<keys.length;i++)
+{
+var k=keys[i];
+var initials=d[k].initials;
+var s=d[k].d;
+console.log(initials,d);
+} */
+}
+function errData(err)
+{
+console.log("Error!");
+console.log(err);
+}
+</script>
+  <!-- container section start -->
+  <section id="container" class="">
+    <!--header start-->
+    <header class="header dark-bg">
+
+
+      <!--logo start-->
+      <a href="index.html" class="logo">UK Covid 19</a>
+      <!--logo end-->
+  
+      
+      <div class="top-nav notification-row">
+       <img alt="" src="img/download1.png">
+      </div>
+    
+    </header>
+    <!--header end-->
+
+    <!--sidebar start-->
+    <aside>
+      <div id="sidebar" class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu">
+          <li class="">
+            <a class="" href="/dashboard.html">
+                          <i class="icon_house_alt"></i>
+                          <span>Dashboard</span>
+                      </a>
+          </li>
+          
+          
+         
+          <li class="sub-menu">
+            <a href="/dashboard.html" class="">
+                          <i class="icon_table"></i>
+                          <span>Data</span>
+                          
+                      </a>
+            
+          </li>
+		  <li class="sub-menu">
+            <a href="/registerofficial.html" class="">
+                          <i class="icon_table"></i>
+                          <span>Register official</span>
+                        
+                      </a>
+            
+          </li>
+		    <li class="sub-menu">
+            <a href="/" class="">
+                          <i class="icon_table"></i>
+                          <span>Logout</span>
+                        
+                      </a>
+            
+          </li>
+
+         
+
+        </ul>
+        <!-- sidebar menu end-->
+      </div>
+    </aside>
+
+    <!--main content start-->
+    <section id="main-content">
+      <section class="wrapper">
+        
+        <!-- page start-->
+        
+          <div class="col-sm-6">
+            <section class="panel">
+             
+              <table class="table table-striped" id='extable'>
+                <thead>
+                  <tr>
+                    <th>Age</th>
+                    <th>Department:</th> 
+                    <th>Loss of Wages:</th>
+                    <th>Name:</th>
+                    <th>No of family members:</th>
+                    <th>Phone number</th>
+                    <th>Present Address</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>A</td>
+                    <td>4</td>
+                    <td>40</td>
+                    <td>200</td>
+					<td>xyz</td>
+					<td>1234567387</td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+          </div>
+        </div>
+        
+
+       
+        <!-- page end-->
+      </section>
+    </section>
+    <!--main content end-->
+    
+  </section>
+  <!-- container section end -->
+  <!-- javascripts -->
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <!-- nicescroll -->
+  <script src="js/jquery.scrollTo.min.js"></script>
+  <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+  <!--custome script for all page-->
+  <script src="js/scripts.js"></script>
+
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.slim.js"
+  integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI="
+  crossorigin="anonymous"></script>
+
+</body>
+
+</html>

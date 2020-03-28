@@ -5,6 +5,7 @@ function signIn(){
     var userSIPassword = document.getElementById("userSIPassword").value;
         firebase.auth().signInWithEmailAndPassword(userSIEmail, userSIPassword).then((success) => {
             console.log("Sucessfully Signed in");
+			window.location.replace("dashboard.html"); 
         }).catch((error) => {
             // Handle Errors here.
             var errorCode = error.code;

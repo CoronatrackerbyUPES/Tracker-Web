@@ -1,0 +1,17 @@
+{
+  "name": "web-tracer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "firebase": "^7.13.0",
+    "firebaseui": "^4.5.0"
+  }
+}
